@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Material UI Employee DB App with CRUD Functionality
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

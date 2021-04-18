@@ -15,6 +15,8 @@ import useTable from "../../components/useTable";
 import * as employeeService from "../../services/employeeService";
 import Controls from "../../components/controls/Controls";
 import { Search } from "@material-ui/icons";
+import AddIcon from "@material-ui/icons/Add";
+import Popup from "../../components/Popup";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -23,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
   },
   searchInput: {
     width: "75%",
+  },
+  newButton: {
+    position: "absolute",
+    right: "10px",
   },
 }));
 
@@ -41,6 +47,7 @@ function Employees() {
       return items;
     },
   });
+  const [openPopup, setOpenPopup] = useState(false);
 
   const {
     TblContainer,
@@ -70,7 +77,6 @@ function Employees() {
         icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
       />
       <Paper className={classes.pageContent}>
-        {/* <EmployeeForm /> */}
         <Toolbar>
           <Controls.Input
             label="Search Employees"
@@ -83,6 +89,13 @@ function Employees() {
               ),
             }}
             onChange={handleSearch}
+          />
+          <Controls.Button
+            text="Add New"
+            variant="outlined"
+            startIcon={<AddIcon />}
+            className={classes.newButton}
+            onClick={() => setOpenPopup(true)}
           />
         </Toolbar>
         <TblContainer>
@@ -100,6 +113,13 @@ function Employees() {
         </TblContainer>
         <TblPagination />
       </Paper>
+      <Popup
+        title="Employee Form"
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+      >
+        <EmployeeForm />
+      </Popup>
     </>
   );
 }

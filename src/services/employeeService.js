@@ -17,6 +17,19 @@ export function insertEmployee(data) {
   localStorage.setItem(KEYS.employees, JSON.stringify(employees));
 }
 
+export function updateEmployee(data) {
+  let employees = getAllEmployees();
+  let recordIndex = employees.findIndex((x) => x.id === data.id);
+  employees[recordIndex] = { ...data };
+  localStorage.setItem(KEYS.employees, JSON.stringify(employees));
+}
+
+export function deleteEmployee(id) {
+  let employees = getAllEmployees();
+  employees = employees.filter((x) => x.id !== id);
+  localStorage.setItem(KEYS.employees, JSON.stringify(employees));
+}
+
 export function generateEmployeeId() {
   if (localStorage.getItem(KEYS.employeeId) == null)
     localStorage.setItem(KEYS.employeeId, "0");
@@ -29,10 +42,11 @@ export function getAllEmployees() {
   if (localStorage.getItem(KEYS.employees) == null)
     localStorage.setItem(KEYS.employees, JSON.stringify([]));
   let employees = JSON.parse(localStorage.getItem(KEYS.employees));
-  //map department ID to department title
+  //map departmentID to department title
   let departments = getDepartmentCollection();
   return employees.map((x) => ({
     ...x,
     department: departments[x.departmentId - 1].title,
   }));
 }
+  

@@ -1,4 +1,16 @@
-# Material UI Employee DB App with CRUD Functionality
+# Material UI Employee Database App
+
+![](https://expertdesign.cc/react-employee-app/screen1.png)
+
+## Change info Modal
+
+![](https://expertdesign.cc/react-employee-app/screen2.png)
+
+## Delete Record Modal
+
+![](https://expertdesign.cc/react-employee-app/screen3.png)
+
+## It's Live 🚀 Visit here ==> https://expertdesign.cc/react-employee-app/
 
 This project was created with [React](https://github.com/facebook/create-react-app).
 
